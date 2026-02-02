@@ -25,9 +25,12 @@ const Login = () => {
           />
         </div>
         <button type="submit" className="btn-primary">
-          Submit
+          Login
         </button>
       </form>
+      <p className="link-text">
+        Don't have an account? <Link to="/register">Register hear</Link>
+      </p>
     </div>
   );
 };
