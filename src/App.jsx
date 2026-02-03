@@ -1,25 +1,22 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-//import Header from "./components/Header";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
+import "./App.css";
 import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
+import AuthGuard from "./auth/AuthGuard.jsx";
 
 const DefaultRoute = () => {
   const authData = JSON.parse(localStorage.getItem("authData"));
   if (authData) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/Login" replace />;
   }
-  return <Navigate to="/register" replace />;
-};
+  return <Navigate to="/Register" replace />;
 
+};
 function App() {
   const route = createBrowserRouter([
     {
@@ -28,19 +25,30 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: (
+      <AuthGuard required={false}>
+        <Login />
+      </AuthGuard>
+      ),
     },
     {
       path: "/register",
-      element: <Register />,
+      element: (
+      <AuthGuard required={false}>
+        <Register />
+      </AuthGuard>
+      ),
     },
-    {
+     {
       path: "/dashboard",
-      element: <Dashboard />,
+      element: (
+      <AuthGuard required={true}>
+        <Dashboard />
+      </AuthGuard>
+      ),
     },
   ]);
 
   return <RouterProvider router={route} />;
 }
-
 export default App;
