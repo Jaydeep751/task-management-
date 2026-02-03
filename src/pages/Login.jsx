@@ -11,7 +11,6 @@ const Login = () => {
 
   const [errors, setErrors] = useState({});
 
- 
   const handleInputChange = (e) => {
     setLoginData({
       ...loginData,
@@ -23,7 +22,6 @@ const Login = () => {
       [e.target.name]: "",
     });
   };
-
 
   const validate = () => {
     const newErrors = {};
@@ -49,19 +47,20 @@ const Login = () => {
 
     if (validate()) {
       const user = JSON.parse(localStorage.getItem("authData"));
-      if(user && loginData.email === user.email && loginData.password ===user.password){
-        localStorage.setItem("loginData",JSON.stringify(loginData));
-      navigate("/Dashboard")
+      if (
+        user &&
+        loginData.email === user.email &&
+        loginData.password === user.password
+      ) {
+        localStorage.setItem("loginData", JSON.stringify(loginData));
+        navigate("/Dashboard");
+      } else {
+        alert("invalid email or password");
+      }
+    } else {
+      alert("Somthing went wrong!");
     }
-     
-    else{
-      alert('invalid email or password')
-    }
-  }
-  else{
-    alert('Somthing went wrong!')
-  }
-}
+  };
   return (
     <div className="form-container">
       <h1 className="form-title">LOGIN</h1>
@@ -92,9 +91,7 @@ const Login = () => {
             placeholder="Enter your password"
             onChange={handleInputChange}
           />
-          {errors.password && (
-            <span className="error">{errors.password}</span>
-          )}
+          {errors.password && <span className="error">{errors.password}</span>}
         </div>
 
         <button type="submit" className="btn-primary">

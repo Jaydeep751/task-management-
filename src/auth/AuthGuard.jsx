@@ -1,10 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-const AuthGuard = ({ 
-    children,
-    required = true, 
-    redirectTo = "/Login" 
-}) => {
+const AuthGuard = ({ children, required = true, redirectTo = "/Login" }) => {
   const authData = JSON.parse(localStorage.getItem("loginData"));
   const isAuthenticated = !!authData;
 

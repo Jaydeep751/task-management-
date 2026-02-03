@@ -62,7 +62,7 @@ const Register = () => {
     e.preventDefault();
     if (validate()) {
       localStorage.setItem("authData", JSON.stringify(formData));
-      alert('Registration successfull...!')
+      alert("Registration successfull...!");
       navigate("/Login");
     }
   };

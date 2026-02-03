@@ -15,7 +15,6 @@ const DefaultRoute = () => {
     return <Navigate to="/Login" replace />;
   }
   return <Navigate to="/Register" replace />;
-
 };
 function App() {
   const route = createBrowserRouter([
@@ -26,25 +25,25 @@ function App() {
     {
       path: "/login",
       element: (
-      <AuthGuard required={false}>
-        <Login />
-      </AuthGuard>
+        <AuthGuard required={false}>
+          <Login />
+        </AuthGuard>
       ),
     },
     {
       path: "/register",
       element: (
-      <AuthGuard required={false}>
-        <Register />
-      </AuthGuard>
+        <AuthGuard required={false}>
+          <Register />
+        </AuthGuard>
       ),
     },
-     {
+    {
       path: "/dashboard",
       element: (
-      <AuthGuard required={true}>
-        <Dashboard />
-      </AuthGuard>
+        <AuthGuard required={true}>
+          <Dashboard />
+        </AuthGuard>
       ),
     },
   ]);
