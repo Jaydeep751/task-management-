@@ -54,6 +54,7 @@ const Login = () => {
       ) {
         localStorage.setItem("loginData", JSON.stringify(loginData));
         navigate("/Dashboard");
+       alert("Login successfully")
       } else {
         alert("invalid email or password");
       }
@@ -86,14 +87,13 @@ const Login = () => {
           <input
             type="password"
             id="password"
-            name="password"
+            name="password" 
             value={loginData.password}
             placeholder="Enter your password"
             onChange={handleInputChange}
           />
           {errors.password && <span className="error">{errors.password}</span>}
         </div>
-
         <button type="submit" className="btn-primary">
           Login
         </button>
