@@ -1,1 +1,12 @@
-{}
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Welcome task",
+      "description": "This is  your task served json-server",
+      "dueDate": "2024-12-31",
+      "completed": false,
+      "priority": "medium"
+    }
+  ]
+}
