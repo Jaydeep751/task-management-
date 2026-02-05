@@ -15,7 +15,7 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       const response = await fetch("http://localhost:3000/tasks");
-      const data = response.json();
+      const data = await response.json();
       setTasks(data);
     } catch (error) {
       console.log(error);
@@ -33,7 +33,7 @@ const Dashboard = () => {
     <div>
       <Navbar title="Task Management" onLogout={handleLogout} />
       <h1>MY TASKS</h1>
-      <TaskList />
+      <TaskList tasks={tasks}/>
     </div>
   );
 };
