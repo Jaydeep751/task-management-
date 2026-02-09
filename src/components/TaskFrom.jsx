@@ -51,7 +51,8 @@ const TaskForm = ({ addTask, updateTask, editingTask }) => {
       if (editingTask) {
         updateTask(formData);
         alert("Task Updated successfully!");
-      } else {
+      } 
+      else {
         addTask(formData);
         alert("Task Added successfully!");
       }
